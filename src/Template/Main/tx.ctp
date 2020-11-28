@@ -13,7 +13,7 @@
 <?php echo $this->element('header') ?>
 
 <div class="tx-head">
-    <h3>LBRY Transaction</h3>
+    <h3>NOON Transaction</h3>
     <h4><?php echo $tx->hash ?></h4>
 </div>
 
@@ -46,7 +46,7 @@
 
 <div class="tx-summary">
     <div class="box p25">
-        <div class="title">Amount (LBC)</div>
+        <div class="title">Amount (NOON)</div>
         <div class="value"><?php echo $this->Amount->format($tx->value) ?></div>
     </div>
 
@@ -105,7 +105,7 @@
                                 $setAddressIds[$addr->address] = 1; ?>
                     <a id="<?php echo $addr->address ?>"></a>
                     <?php   endif; ?>
-                    <div><span class="value"><?php echo $this->Amount->format($in->value) ?> LBC</span> from</div>
+                    <div><span class="value"><?php echo $this->Amount->format($in->value) ?> NOON</span> from</div>
                     <div class="address"><a href="/address/<?php echo $addr->address ?>"><?php echo $addr->address ?></a>
                     (<a class="output-link" href="/tx/<?php echo $in->prevout_hash ?>#output-<?php echo $in->prevout_n ?>">output</a>)
                     
@@ -129,7 +129,7 @@
             <div class="subtitle"><?php echo $tx->output_count ?> output<?php echo $tx->output_count === 1 ? '' : 's'; ?>
 
             <?php if ($fee > 0): ?>
-            <span class="fee"><span class="label">Fee</span> <span class="value"><?php echo $this->Amount->format($fee) ?> LBC</span></span>
+            <span class="fee"><span class="label">Fee</span> <span class="value"><?php echo $this->Amount->format($fee) ?> NOON</span></span>
             <?php endif; ?>
             </div>
 
@@ -152,7 +152,7 @@
                                 $setAddressIds[$addr->address] = 1; ?>
                 <a id="<?php echo $addr->address ?>"></a>
                 <?php   endif; ?>
-                <div><span class="value"><?php echo $this->Amount->format($out->value) ?> LBC</span> to</div>
+                <div><span class="value"><?php echo $this->Amount->format($out->value) ?> NOON</span> to</div>
                 <div class="address"><a href="/address/<?php echo $addr->address ?>"><?php echo $addr->address ?></a>
 
                 <?php if ($out->is_spent): ?>(<a href="/tx/<?php if(isset($out->spend_input_id)) { echo $out->spend_input_hash; } ?>#input-<?php if(isset($out->spend_input_id)) {echo $out->spend_input_id; } ?>">spent</a>)<?php else: ?>(unspent)<?php endif; ?>
