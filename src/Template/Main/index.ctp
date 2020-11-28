@@ -117,7 +117,7 @@
             <form method="get" action="/find">
                 <input class="search-input" name="q" type="text" placeholder="Enter a block height or hash, claim id or name, transaction hash or address" />
                 <div class="ctls">
-                    <div class="left-links"><a href="https://lbry.io/get">Download the LBRY App</a></div>
+                    <div class="left-links"><a href="https://github.com/nooncoin/nooncoin/releases">Download Wallet</a></div>
                     <button class="btn btn-search">Search</button>
                     <div class="right-links">
                         <a href="/realtime">Realtime</a> &bull; <a href="/stats" class="last">Stats</a>
@@ -152,7 +152,7 @@
 
         <div class="recent-blocks">
             <h3>Recent Blocks</h3>
-            <a class="all-blocks-link" href="/blocks">LBRY Blocks</a>
+            <a class="all-blocks-link" href="/blocks">NOON Blocks</a>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -178,52 +178,6 @@
                     <?php endforeach; ?>
                 </tbody>
             </table>
-        </div>
-
-        <div class="recent-claims">
-            <h3>Recent Claims</h3>
-            <a class="claim-explorer-link" href="/claims">Claims Explorer</a>
-            <?php $idx = 0; $a = ['purple', 'orange', 'blue', 'teal', 'green', 'yellow']; 
-            foreach ($recentClaims as $claim):
-                $idx++;
-                $autoThumbText = $claim->getAutoThumbText();
-
-                // content type
-                $ctTag = $claim->getContentTag();
-            ?>
-            <div data-id="<?php echo $claim->claim_id ?>" class="claim-box<?php if ($idx == 5): ?> last<?php endif; ?>">
-                <div class="tags">
-                    <?php if ($ctTag): ?>
-                    <div class="content-type"><?php echo strtoupper($ctTag) ?></div>
-                    <?php endif; ?>
-                    <?php if ($claim->is_nsfw): ?>
-                    <div class="nsfw">NSFW</div>
-                    <?php endif; ?>
-                </div>
-
-                <div data-autothumb="<?php echo $autoThumbText ?>" class="thumbnail <?php echo $a[mt_rand(0, count($a) - 1)] ?>">
-                    <?php if (!$claim->is_nsfw && strlen(trim($claim->thumbnail_url)) > 0): ?>
-                        <img src="<?php echo strip_tags($claim->thumbnail_url) ?>" alt="" />
-                    <?php else: ?>
-                        <div class="autothumb"><?php echo $autoThumbText ?></div>
-                    <?php endif; ?>
-                </div>
-
-                <div class="metadata">
-                    <div class="title" title="<?php echo $claim->claim_type == 1 ? $claim->name : ((strlen(trim($claim->title)) > 0) ? $claim->title : ''); ?>"><?php echo $claim->claim_type == 1 ? $claim->name : ((strlen(trim($claim->title)) > 0) ? $claim->title : '<em>No Title</em>') ?></div>
-                    <div class="link" title="<?php echo $claim->getLbryLink() ?>"><a href="<?php echo $claim->getLbryLink() ?>"><?php echo $claim->getLbryLink() ?></a></div>
-
-                    <div class="clear"></div>
-                    <?php if ($claim->claim_type == 2 && strlen(trim($claim->description)) > 0): ?>
-                    <div class="desc"><?php echo $claim->description ?></div>
-                    <?php endif; ?>
-                </div>
-
-                <a class="tx-link" href="/tx/<?php echo $claim->transaction_hash_id ?>#output-<?php echo $claim->vout ?>" target="_blank">Transaction</a>
-            </div>
-            <?php endforeach; ?>
-
-            <div class="clear"></div>
         </div>
     </div>
 
