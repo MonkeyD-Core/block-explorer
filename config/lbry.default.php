@@ -2,7 +2,7 @@
 
 return [
     'Lbry' => [
-        'RpcUrl' => 'http://user:password@127.0.0.1:9245',
+        'RpcUrl' => 'http://user:password@127.0.0.1:2332',
     ],
 
     'Redis' => [
